@@ -7,7 +7,7 @@ const User = ({user}) => {
         <>
             <div>
                 {id} {name} {username}
-                <Link to={id.toString()}>
+                <Link to={id.toString()} userstate={user}>
                     <button>userDetails</button>
                 </Link>
             </div>
@@ -15,4 +15,4 @@ const User = ({user}) => {
     );
 };
 
-export default User;
+export {User};

@@ -1,15 +1,19 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 const Post = ({post}) => {
-    const {title} = post;
+    const {id, title} = post;
     return (
         <>
             <div>
                 {title}
-                <button>postDetails</button>
+                <Link to={id.toString()} postState={post}>
+                    <button>postDetails</button>
+                </Link>
             </div>
+
         </>
     );
 };
 
-export default Post;
+export {Post};

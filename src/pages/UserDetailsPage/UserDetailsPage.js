@@ -1,38 +1,54 @@
 import React, {useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
+import {useLocation, useParams} from "react-router-dom";
 
 import {userService} from "../../service/user.service";
+import './UserDetailsPage.css'
 
 const UserDetailsPage = () => {
-    const {id} = useParams();
     const [user, setUser] = useState(null);
+    const {id} = useParams();
+    const {userstate} = useLocation();
 
     useEffect(() => {
-        userService.getUserId(id).then(value => setUser(value))
-    },[])
+        if (userstate) {
+            setUser(userstate);
+            return
+        }
+        userService.getUserId(id).then(value => setUser(value));
+    }, [id])
 
     return (
-        <div>
+        <>
             {user &&
-            <div>
-                <div>{user.id}</div>
-                <div>{user.name}</div>
-                <div>{user.username}</div>
-                <div>{user.email}</div>
-                <div>{user.address.street}</div>
-                <div>{user.address.suite}</div>
-                <div>{user.address.city}</div>
-                <div>{user.address.zipcode}</div>
-                <div>{user.address.geo.lat}</div>
-                <div>{user.address.geo.lng}</div>
-                <div>{user.phone}</div>
-                <div>{user.website}</div>
-                <div>{user.company.name}</div>
-                <div>{user.company.catchPhrase}</div>
-                <div>{user.company.bs}</div>
-            </div>}
-        </div>
+            <>
+                <ul>
+                    <li>{user.id}</li>
+                    <li>{user.name}</li>
+                    <li>{user.username}</li>
+                    <li>{user.email}</li>
+                    <ul>
+                        <li>{user.address.street}</li>
+                        <li>{user.address.suite}</li>
+                        <li>{user.address.city}</li>
+                        <li>{user.address.zipcode}</li>
+                        <ul>
+                            <li>{user.address.geo.lat}</li>
+                            <li>{user.address.geo.lng}</li>
+                        </ul>
+                    </ul>
+                    <li>{user.phone}</li>
+                    <li>{user.website}</li>
+                    <ul>
+                        <li>{user.company.name}</li>
+                        <li>{user.company.catchPhrase}</li>
+                        <li>{user.company.bs}</li>
+                    </ul>
+                </ul>
+                <button>All Post Users</button>
+            </>
+            }
+        </>
     );
 };
 
-export default UserDetailsPage;
+export {UserDetailsPage};

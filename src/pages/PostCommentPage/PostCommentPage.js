@@ -1,11 +1,11 @@
 import React from 'react';
 
-const NotFoundPage = () => {
+const PostCommentPage = () => {
     return (
         <div>
-            NotFoundPage
+            
         </div>
     );
 };
 
-export {NotFoundPage};
+export {PostCommentPage};

@@ -1,24 +1,27 @@
 import React, {useEffect, useState} from 'react';
-import {useLocation, useParams} from "react-router-dom";
 
-import {userService} from "../../service/user.service";
-import './UserDetailsPage.css'
+import './UserDetailsPage.css';
+import {useLocation, useParams} from "react-router-dom";
+import {usersService} from "../../service/user.service";
 
 const UserDetailsPage = () => {
     const [user, setUser] = useState(null);
+
+    const {state: userDetails} = useLocation();
     const {id} = useParams();
-    const {userstate} = useLocation();
 
     useEffect(() => {
-        if (userstate) {
-            setUser(userstate);
-            return
+        if (userDetails) {
+            setUser(userDetails);
+            return;
         }
-        userService.getUserId(id).then(value => setUser(value));
-    }, [id])
+        usersService.getUserId(id).then(value => setUser(value))
+
+    }, [id, userDetails])
+
 
     return (
-        <>
+        <div className={'UserDetailsPage'}>
             {user &&
             <>
                 <ul>
@@ -47,7 +50,7 @@ const UserDetailsPage = () => {
                 <button>All Post Users</button>
             </>
             }
-        </>
+        </div>
     );
 };
 

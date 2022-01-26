@@ -1,7 +1,7 @@
 import React from 'react';
-
 import {Outlet} from "react-router-dom";
-import {Header} from "../index";
+
+import {Header} from "../../components";
 import './Layout.css';
 
 const Layout = () => {
@@ -11,9 +11,6 @@ const Layout = () => {
             <main className={'main'}>
                 <Outlet/>
             </main>
-            <footer className={'footer'}>
-                @ReactRouterDom
-            </footer>
         </>
     );
 };

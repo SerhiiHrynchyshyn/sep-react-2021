@@ -1,33 +1,36 @@
 import React, {useEffect, useState} from 'react';
 import {useLocation, useParams} from "react-router-dom";
-import {postService} from "../../service/post.service";
+
+import './PostDetailsPage.css';
+import {postsService} from "../../service/post.service";
 
 const PostDetailsPage = () => {
     const [post, setPost] = useState(null);
-
+    const {state: postDetails} = useLocation();
     const {id} = useParams();
-    const {postState} = useLocation();
 
     useEffect(() => {
-        if (postState){
-            setPost(postState);
-            return
+        if (postDetails) {
+            setPost(postDetails)
+            return;
         }
-        postService.getPostId(id).then(value => setPost(value))
-    },[id])
+        postsService.getPostId(id).then(value => setPost(value))
+    }, [id, postDetails])
 
     return (
-        <div>
-            {post &&
-            <>
-                <ul>
-                    <li>{post.userId}</li>
-                    <li>{post.id}</li>
-                    <li>{post.title}</li>
-                    <li>{post.body}</li>
-                </ul>
-                <button>All Comments posts</button>
-            </>}
+        <div className={'PostDetailsPage'}>
+            {
+                post &&
+                <>
+                    <ul>
+                        <li>{post.userId}</li>
+                        <li>{post.id}</li>
+                        <li>{post.title}</li>
+                        <li>{post.body}</li>
+                    </ul>
+                    <button>All Coments Posts</button>
+                </>
+            }
         </div>
     );
 };

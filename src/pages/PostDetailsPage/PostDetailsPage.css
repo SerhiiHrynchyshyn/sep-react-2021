@@ -1,13 +1,13 @@
-.UserDetailsPage {
+.PostDetailsPage {
     width: 50%;
 }
 
-.UserDetailsPage > ul, li, a {
+.PostDetailsPage > ul, li, a {
     text-decoration: none;
     list-style-type: none;
 }
 
-.UserDetailsPage > button {
+.PostDetailsPage > button {
     margin-top: 20px;
     padding: 10px 20px;
     background: black;

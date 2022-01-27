@@ -2,12 +2,12 @@
     width: 50%;
 }
 
-.UserDetailsPage > ul, li, a {
+.UserDetailsPage ul, li, a {
     text-decoration: none;
     list-style-type: none;
 }
 
-.UserDetailsPage > button {
+.UserDetailsPage button {
     margin-top: 20px;
     padding: 10px 20px;
     background: black;

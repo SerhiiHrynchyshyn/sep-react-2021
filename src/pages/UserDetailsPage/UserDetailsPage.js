@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 
 import './UserDetailsPage.css';
-import {useLocation, useParams} from "react-router-dom";
+import {Link, Outlet, useLocation, useParams} from "react-router-dom";
 import {usersService} from "../../service/user.service";
 
 const UserDetailsPage = () => {
@@ -23,7 +23,7 @@ const UserDetailsPage = () => {
     return (
         <div className={'UserDetailsPage'}>
             {user &&
-            <>
+            <div className={'DetailsPage'}>
                 <ul>
                     <li>{user.id}</li>
                     <li>{user.name}</li>
@@ -47,9 +47,12 @@ const UserDetailsPage = () => {
                         <li>{user.company.bs}</li>
                     </ul>
                 </ul>
-                <button>All Post Users</button>
-            </>
+                <Link to={'posts'}><button>All Post Users</button></Link>
+            </div>
             }
+            <div className={'userOfPosts'}>
+                <Outlet/>
+            </div>
         </div>
     );
 };

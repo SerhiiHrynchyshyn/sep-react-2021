@@ -1,8 +1,15 @@
 import React from 'react';
 
 import {Route, Routes} from "react-router-dom";
-import {Layout, PostDetailsPage, PostsPage, UserDetailsPage, UsersOfPostsPage, UsersPage} from "./pages";
-import {PostOfCommentsPage} from "./pages/PostOfCommentsPage/PostOfCommentsPage";
+import {
+    Layout,
+    PostDetailsPage,
+    PostOfCommentsPage,
+    PostsPage,
+    UserDetailsPage,
+    UsersOfPostsPage,
+    UsersPage
+} from "./pages";
 
 const App = () => {
     return (

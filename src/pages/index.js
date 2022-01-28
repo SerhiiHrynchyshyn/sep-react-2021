@@ -1,4 +1,7 @@
+export * from './AlbumsPage/AlbumsPage';
 export * from './Layout/Layout';
+export * from './NotFoundPage/NotFoundPage';
+export * from './PhotosPage/PhotosPage';
 export * from './PostDetailsPage/PostDetailsPage';
 export * from './PostOfCommentsPage/PostOfCommentsPage';
 export * from './PostsPage/PostsPage';

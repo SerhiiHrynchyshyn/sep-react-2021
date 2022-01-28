@@ -10,6 +10,7 @@ const User = ({user}) => {
             <div>
                 {id} {name} {username}
                 <Link to={id.toString()} state={{...user}}><button>User Details</button></Link>
+                <Link to={id.toString() + '/albums'} state={{...user}}><button>User album</button></Link>
             </div>
         </>
     );

@@ -1,17 +1,30 @@
-import React from 'react';
-import useForm from "use-hook-form";
+import React, {useRef} from 'react';
 
-const Form = () => {
+const Form = ({dispatch}) => {
 
-    const {handleSubmit, register, reset} = useForm();
+    const catInput = useRef();
+    const dogInput = useRef();
+
+
+    const saveCat = () => {
+        dispatch({type: 'add_cat', payload:{cat: catInput.current.value}})
+    }
+
+    const saveDog = () => {
+        dispatch({type: 'add_dog', payload:{dog: dogInput.current.value}})
+    }
+    const submit = (e) => {
+        e.preventDefault()
+        e.target.reset();
+    }
 
     return (
         <div>
-            <form>
-                <label>Dog<input type="text" {...register('dog')}/></label>
-                <button>Add Dog</button>
-                <label>Dog<input type="text" {...register('cat')}/></label>
-                <button>Add Cat</button>
+            <form onSubmit={submit}>
+                <label>Cat: <input type="text" ref={catInput}/></label>
+                <button onClick={saveCat}>Add Cat</button>
+                <label>Dog: <input type="text" ref={dogInput}/></label>
+                <button onClick={saveDog}>Add Dog</button>
             </form>
         </div>
     );

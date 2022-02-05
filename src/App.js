@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Routes} from "react-router-dom";
-import {Layout, UsersPage} from "./Pages";
+import {CarsPage, CommentsPage, Layout, PostsPage, UsersPage} from "./Pages";
 
 const App = () => {
     return (
@@ -8,6 +8,9 @@ const App = () => {
             <Routes>
                 <Route path={'/'} element={<Layout/>}>
                     <Route path={'users'} element={<UsersPage/>}/>
+                    <Route path={'posts'} element={<PostsPage/>}/>
+                    <Route path={'comments'} element={<CommentsPage/>}/>
+                    <Route path={'cars'} element={<CarsPage/>}/>
                 </Route>
             </Routes>
         </div>
